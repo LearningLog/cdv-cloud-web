@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import Cookies from 'js-cookie'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
@@ -11,6 +11,16 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
+// 播放器
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+import 'videojs-flash'
+import 'videojs-contrib-hls'
+// import 'videojs-contrib-hls.js/src/videojs.hlsjs'
+// 生成二维码
+import VueQriously from 'vue-qriously'
+Vue.prototype.$Cookies = Cookies
 
 import '@/icons' // icon
 import '@/permission' // permission control
@@ -27,6 +37,9 @@ import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
+
+Vue.use(VueVideoPlayer)
+Vue.use(VueQriously)
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })

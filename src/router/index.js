@@ -73,6 +73,30 @@ export const constantRoutes = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
+      },
+      {
+        path: 'HelloWorld',
+        name: 'HelloWorld',
+        component: () => import('@/views/examples/HelloWorld'),
+        meta: { title: 'HelloWorld', icon: 'HelloWorld' }
+      },
+      {
+        path: 'live',
+        name: 'Live',
+        component: () => import('@/views/examples/live'),
+        meta: { title: 'Live', icon: 'live' }
+      },
+      {
+        path: 'playback',
+        name: 'Playback',
+        component: () => import('@/views/examples/playback'),
+        meta: { title: 'Playback', icon: 'playback' }
+      },
+      {
+        path: 'vueCropper',
+        name: 'VueCropper',
+        component: () => import('@/views/examples/vueCropper'),
+        meta: { title: 'VueCropper', icon: 'vueCropper' }
       }
     ]
   },
