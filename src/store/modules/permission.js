@@ -62,6 +62,7 @@ const actions = {
 }
 
 export default {
+  // 通过添加 namespaced: true,使模块具有更高的封装度和复用性，使其成为带命名空间的模块
   namespaced: true,
   state,
   mutations,

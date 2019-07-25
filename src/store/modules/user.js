@@ -94,6 +94,8 @@ const actions = {
 }
 
 export default {
+  // 通过添加 namespaced: true,使模块具有更高的封装度和复用性，使其成为带命名空间的模块
+  // 当模块被注册后，它的所有 getter、action 及 mutation 都会自动根据模块注册的路径调整命名。
   namespaced: true,
   state,
   mutations,

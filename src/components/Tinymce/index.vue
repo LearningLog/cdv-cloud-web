@@ -77,6 +77,14 @@ export default {
     }
   },
   computed: {
+    language() {
+      // 容错性处理
+      if (this.$store) {
+        return this.languageTypeList[this.$store.getters.language]
+      } else {
+        return this.languageTypeList['zh']
+      }
+    },
     containerWidth() {
       const width = this.width
       if (/^[\d]+(\.[\d]+)?$/.test(width)) { // matches `100`, `'100'`
@@ -91,6 +99,11 @@ export default {
         this.$nextTick(() =>
           window.tinymce.get(this.tinymceId).setContent(val || ''))
       }
+    },
+    // 若语言设置变化，则销毁当前编辑器，重新生成当前语言的新编辑器
+    language() {
+      this.destroyTinymce()
+      this.$nextTick(() => this.initTinymce())
     }
   },
   mounted() {
@@ -122,7 +135,7 @@ export default {
       const _this = this
       window.tinymce.init({
         selector: `#${this.tinymceId}`,
-        language: this.$Cookies.get('language') ? this.languageTypeList[this.$Cookies.get('language')] : this.languageTypeList['en'],
+        language: this.language,
         height: this.height,
         body_class: 'panel-body ',
         object_resizing: false,
