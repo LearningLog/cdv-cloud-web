@@ -27,7 +27,7 @@ export default {
     id: {
       type: String,
       default: function() {
-        return 'vue-tinymce-' + +new Date() + ((Math.random() * 1000).toFixed(0) + '')
+        return 'onair-tinymce-' + +new Date() + ((Math.random() * 1000).toFixed(0) + '')
       }
     },
     value: {
@@ -43,6 +43,7 @@ export default {
     },
     menubar: {
       type: String,
+      required: false,
       default: 'file edit insert view format table'
     },
     plugins: {
