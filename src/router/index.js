@@ -24,12 +24,26 @@ import Layout from '@/layout'
     activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
   }
  */
-
 /**
- * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
+ * 注意: 菜单项sub-menu 仅在 route children.length >= 1 时显示
+ * 详情请看此地址: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
+ *
+ * hidden: true                   如果设置为true，则不显示在左侧菜单栏，默认false
+ * alwaysShow: true               如果设置为true，则一直显示在根菜单
+ *                                如果不设置alwaysShow，当它的子组件路由超过一个时，它将变为嵌套模式，否则，不显示根菜单。
+ * redirect: noRedirect           如果设置为noRedirect，则在面包屑中不可以重定向（点击无效）
+ * name:'router-name'             the name is used by <keep-alive> (must set!!!)
+ * meta : {
+    roles: ['admin','editor']    control the page roles (you can set multiple roles)
+    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar
+    breadcrumb: false            if set false, the item will hidden in breadcrumb，但才可以在菜单中显示(default is true)
+    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
+  }
  */
+
+// 所有权限通用路由表
+// 如首页和登录页和一些不用权限（404、401）的公用页面
 export const constantRoutes = [
   {
     path: '/login',
@@ -51,7 +65,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: 'dashboard', icon: 'dashboard' }
     }]
   },
 
@@ -115,10 +129,8 @@ export const constantRoutes = [
   }
 ]
 
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
+// 异步挂载的路由
+// 动态需要根据权限加载的路由表
 export const asyncRoutes = [
   {
     path: '/nested',
@@ -193,6 +205,7 @@ export const asyncRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
+// 实例化vue的时候只挂载constantRouter
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),

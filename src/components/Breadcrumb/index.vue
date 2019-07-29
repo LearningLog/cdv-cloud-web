@@ -2,14 +2,17 @@
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
-        <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
-        <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+        <!--如果当前路由记录设置为noRedirect，或者是最后一个路由记录，则不支持重定向-->
+        <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ generateTitle(item.meta.title) }}</span>
+        <!--否则支持重定向-->
+        <a v-else @click.prevent="handleLink(item)">{{ generateTitle(item.meta.title) }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
 </template>
 
 <script>
+import { generateTitle } from '@/utils/i18n'
 import pathToRegexp from 'path-to-regexp'
 
 export default {
@@ -19,7 +22,15 @@ export default {
     }
   },
   watch: {
-    $route() {
+    $route(route) {
+      // 如果你要去重定向页面，则不更新面包屑
+      // ES5只有indexOf方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。
+      // includes()：返回布尔值，表示是否找到了参数字符串；
+      // startsWith()：返回布尔值，表示参数字符串是否在查找字符串的头部；
+      // endsWith()：返回布尔值，表示参数字符串是否在查找字符串的尾部。
+      if (route.path.startsWith('/redirect/')) {
+        return
+      }
       this.getBreadcrumb()
     }
   },
@@ -27,13 +38,14 @@ export default {
     this.getBreadcrumb()
   },
   methods: {
+    generateTitle,
     getBreadcrumb() {
       // only show routes with meta.title
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
       const first = matched[0]
 
       if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+        matched = [{ path: '/dashboard', meta: { title: 'dashboard' }}].concat(matched)
       }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
@@ -46,7 +58,7 @@ export default {
       return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
     },
     pathCompile(path) {
-      // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
+      // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561 面包屑不支持:id的方式
       const { params } = this.$route
       var toPath = pathToRegexp.compile(path)
       return toPath(params)

@@ -1,3 +1,6 @@
+/**
+* @Description: 处理mobile 和 desktop 页面切换效果
+*/
 import store from '@/store'
 
 const { body } = document

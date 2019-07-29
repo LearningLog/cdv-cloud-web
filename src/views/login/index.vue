@@ -9,7 +9,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <i class="iconfont icon-zhucedengluyonghuming"></i>
+          <i class="iconfont icon-zhucedengluyonghuming" />
         </span>
         <el-input
           ref="username"
@@ -24,7 +24,7 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <i class="iconfont icon-zhucedenglumima"></i>
+          <i class="iconfont icon-zhucedenglumima" />
         </span>
         <el-input
           :key="passwordType"
@@ -38,11 +38,12 @@
           @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          <!--<svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />-->
+          <i :class="passwordType === 'password' ? 'iconfont icon-yincangdaan' : 'iconfont icon-kejian'" />
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
@@ -57,8 +58,8 @@
 import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 export default {
-  components: { LangSelect },
   name: 'Login',
+  components: { LangSelect },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
