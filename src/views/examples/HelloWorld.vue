@@ -19,6 +19,7 @@
     <tinymce :id="content" v-model="content" class="tinymce" :height="300" :width="900" :value="content" :toolbar="toolbar" :plugins="plugins" />
     <!--显示输入的文字-->
     <div class="editor-content" v-html="content" />
+    <Footer />
   </div>
 </template>
 
@@ -28,9 +29,10 @@ import clip from '@/utils/clipboard'
 // 指令形式使用
 import clipboard from '@/directive/clipboard/index.js'
 import Tinymce from '@/components/Tinymce'
+import Footer from '@/components/Footer'
 export default {
   name: 'HelloWorld',
-  components: { Tinymce },
+  components: { Tinymce, Footer },
   directives: {
     clipboard
   },
