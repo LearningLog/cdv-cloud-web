@@ -20,6 +20,7 @@
     <!--显示输入的文字-->
     <div class="editor-content" v-html="content" />
     <Footer />
+    <About />
   </div>
 </template>
 
@@ -30,9 +31,10 @@ import clip from '@/utils/clipboard'
 import clipboard from '@/directive/clipboard/index.js'
 import Tinymce from '@/components/Tinymce'
 import Footer from '@/components/Footer'
+import About from '@/components/About'
 export default {
   name: 'HelloWorld',
-  components: { Tinymce, Footer },
+  components: { Tinymce, Footer, About },
   directives: {
     clipboard
   },
