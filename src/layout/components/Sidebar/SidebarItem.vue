@@ -1,5 +1,7 @@
 <template>
   <div v-if="!item.hidden" class="menu-wrapper">
+    <!--当父组件只有一个或者没有字组件，并且当前组件没有设置alwaysShow，则-->
+    <!--alwaysShow  如果设置为true，则一直显示在根菜单， 如果不设置alwaysShow，当它的子组件路由超过一个时，它将变为嵌套模式，否则，不显示根菜单。-->
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -62,18 +64,18 @@ export default {
         if (item.hidden) {
           return false
         } else {
-          // Temp set(will be used if only has one showing child)
+          // Temp set(只显示一个子路由时被使用)
           this.onlyOneChild = item
           return true
         }
       })
 
-      // When there is only one child router, the child router is displayed by default
+      // 当只有一个子路由时，默认情况下会显示子路由。
       if (showingChildren.length === 1) {
         return true
       }
 
-      // Show parent if there are no child router to display
+      // 如果没有要显示的子路由，则显示父路由
       if (showingChildren.length === 0) {
         this.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
         return true
