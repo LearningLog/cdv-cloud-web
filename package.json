@@ -22,15 +22,11 @@
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
-    "videojs-contrib-hls": "^5.15.0",
-    "videojs-contrib-hls.js": "^3.2.0",
-    "videojs-flash": "^2.2.0",
     "vue": "2.6.10",
     "vue-cropper": "^0.4.9",
     "vue-i18n": "^8.12.0",
     "vue-qriously": "^1.1.1",
     "vue-router": "3.0.6",
-    "vue-video-player": "^5.0.2",
     "vuex": "3.1.0"
   },
   "devDependencies": {

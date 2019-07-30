@@ -14,13 +14,6 @@ import router from './router'
 
 import i18n from './lang' // internationalization
 
-// 播放器
-import VueVideoPlayer from 'vue-video-player'
-import 'video.js/dist/video-js.css'
-import 'vue-video-player/src/custom-theme.css'
-import 'videojs-flash'
-import 'videojs-contrib-hls'
-// import 'videojs-contrib-hls.js/src/videojs.hlsjs'
 // 生成二维码
 import VueQriously from 'vue-qriously'
 Vue.prototype.$Cookies = Cookies
@@ -41,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
-Vue.use(VueVideoPlayer)
 Vue.use(VueQriously)
 
 Vue.use(ElementUI, {
