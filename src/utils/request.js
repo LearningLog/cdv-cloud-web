@@ -10,7 +10,14 @@ const service = axios.create({
   timeout: 5000 // request timeout
 })
 
-// request interceptor
+/**
+ * 请求拦截器
+ * 拦截器函数接收一个参数 config
+ * config 就是你当前请求的配置对象
+ * 当你使用 axios 发起请求的时候，那么就会先经过这个拦截器然后再发出请求
+ * 也就是说在请求拦截器内部的请求还没有发出去
+ * 我们可以在这里定制请求之前的行为
+ */
 service.interceptors.request.use(
   config => {
     // do something before request is sent
@@ -30,7 +37,12 @@ service.interceptors.request.use(
   }
 )
 
-// response interceptor
+/**
+ * 响应拦截器
+ * 我们可以在这里对一些公共的业务进行处理
+ * 例如需要对每个接口进行 403 权限认证判断
+ * 如果本地响应的数据是 403 ，则我们提示用户：你没有权限执行该操作
+ */
 service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status

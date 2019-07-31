@@ -6,21 +6,15 @@
     <el-button v-clipboard:copy="inputData" v-clipboard:success="clipboardSuccess" type="success" plain>copy2</el-button>
     <br><br>
     <div>{{ token }}</div>
-    <el-button type="primary" plain @click="setlanguage('zh')">zh</el-button>
-    <el-button type="primary" plain @click="setlanguage('en')">en</el-button>
     <el-button type="primary" plain @click="add()">addCookie</el-button>
     <el-button type="primary" plain @click="get()">getCookie</el-button>
     <el-button type="primary" plain @click="del()">delCookie</el-button>
-    <el-button type="primary" plain @click="live()">to live</el-button>
-    <el-button type="primary" plain @click="playback()">to playback</el-button>
-    <el-button type="primary" plain @click="vueCropper()">to vueCropper</el-button>
     <br><br>
     <!--引入组件-->
     <tinymce :id="content" v-model="content" class="tinymce" :height="300" :width="900" :value="content" :toolbar="toolbar" :plugins="plugins" />
     <!--显示输入的文字-->
     <div class="editor-content" v-html="content" />
     <div id="video" />
-    <Footer />
     <About />
     <div class="placeholder-container">
       <div>placeholder</div>
@@ -136,6 +130,7 @@
     <el-tooltip placement="top" content="tooltip">
       <back-to-top :custom-style="myBackToTopStyle" :visibility-height="300" :back-position="0" transition-name="fade" />
     </el-tooltip>
+    <Footer />
   </div>
 </template>
 
@@ -207,18 +202,6 @@ export default {
     get() {
       this.token = this.$Cookies.get('token')
     },
-    setlanguage(lang) {
-      this.language = this.$Cookies.set('language', lang)
-    },
-    live() {
-      this.$router.push({ path: '/live' })
-    },
-    playback() {
-      this.$router.push({ path: '/playback' })
-    },
-    vueCropper() {
-      this.$router.push({ path: '/examples/vueCropper' })
-    },
     initVideo() {
       $('#video').videoPlayer({
         id: 'myVideo', // 创建video id
@@ -227,14 +210,9 @@ export default {
         width: 600, // 视频音频的宽 最小宽度500
         height: 350, // 视频的宽,音频设置无效
         source: 'http://oss.huayun.cdvcloud.com/WJSL/WJSL/54c6f9582a80fc1e70ff5575/dd1f5b0f031e424a86daa58e699fd570_13.flv', // 播放源地址
-        // source: 'http://2157.liveplay.myqcloud.com/2157_358535a.flv', // 播放源地址
-        // source: 'http://down.soundaer.com/live/stream_89003_sd/playlist.m3u8', // 播放源地址
-        // source: '//vjs.zencdn.net/v/oceans.mp4', // 播放源地址
-        // source: 'http://www.html5videoplayer.net/videos/madagascar3.mp4', // 播放源地址
         // source: 'http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8', // 播放源地址
         title: '这里是标题',
-        thumbnailUrl: '../assets/images/thumbnail.jpg', // 播放器缩略图
-        // thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
+        thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
         playType: 'video', // 可选值 视频：video 音频：audio
         flvAudio: false,
         shootingFlag: false
