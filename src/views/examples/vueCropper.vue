@@ -59,7 +59,6 @@
         <el-button type="primary" @click="rotateRight">向右旋转90°</el-button>
         <el-button type="primary" @click="down('base64')">download(base64)</el-button>
         <el-button type="primary" @click="down('blob')">download(blob)</el-button>
-        <el-button type="primary" @click="refreshCrop">refresh</el-button>
         <el-button type="primary" @click="finish('base64')">preview(base64)</el-button>
         <el-button type="primary" @click="finish('blob')">preview(blob)</el-button>
         <el-button @click="dialogVisible = false">取 消</el-button>
@@ -121,8 +120,8 @@ export default {
     clearCrop() {
       this.$refs.cropper.clearCrop()
     },
-    // 重置截图
-    refresh() {
+    // 重置
+    refreshCrop() {
       this.$refs.cropper.refresh()
     },
     // 手动缩放
@@ -204,10 +203,6 @@ export default {
           this.model = true
         })
       }
-    },
-    // 重置
-    refreshCrop() {
-      // this.dialogVisible = true
     },
     // 实时预览函数
     realTime(data) {
