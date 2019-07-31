@@ -22,12 +22,13 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 /**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
+ * 本地会启动一个 mock-server 来模拟数据
+ * 如果你想启用纯前端 Mock，不使用 mock-server
+ * 你可以直接调用 mockXHR()
  *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online! ! !
+ * 当目前为开发环境时会使用 MockJs
+ * 请在上线前注释掉此处！！！
+ * 详情：https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/essentials/mock-api.html，此版本为v4.2.1，
  */
 import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {

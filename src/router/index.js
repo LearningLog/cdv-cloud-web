@@ -45,6 +45,24 @@ import Layout from '@/layout'
 // 所有权限通用路由表
 // 如首页和登录页和一些不用权限（404、401）的公用页面
 export const constantRoutes = [
+  // 需求： 点击侧边菜单栏 刷新当前路由
+  /**
+   * 1，用户点击当前高亮的路由并不会刷新view，因为vue-router会拦截你的路由，它判断你的url并没有任何变化，所以它不会触发任何钩子或者是view的变化
+   * 2，因此创建一个空的Redirect页面，通过判断当前点击的菜单路由和当前的路由是否一致
+   * 一致的时候，会先跳转到专门 Redirect 的页面，然后将路由重定向到我想去的页面，这样就起到了刷新的效果了。
+   */
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
+
   {
     path: '/login',
     component: () => import('@/views/login/index'),
