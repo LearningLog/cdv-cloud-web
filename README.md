@@ -28,7 +28,7 @@ English | [简体中文](./README-zh.md)
 
 - 项目是基于 [Vue](https://cn.vuejs.org/index.html) 的单页面应用，严格遵守了MVVM的框架原理
 - 因为倾向于使用 [Element](https://element.eleme.cn/2.7/#/zh-CN/component/installation) 作为UI框架，因此
-- 选择了基于 [vue-element-admin v4.0+](https://github.com/PanJiaChen/vue-element-admin) / [访问](https://panjiachen.gitee.io/vue-admin-template) / [使用文档](https://panjiachen.github.io/vue-element-admin-site/zh/) 的 基础模板: [vue-admin-template v4.2.1](https://github.com/PanJiaChen/vue-admin-template) / [访问](https://panjiachen.gitee.io/vue-admin-template) 作为模板进行二次开发
+- 选择了基于 [vue-element-admin v4.0+](https://github.com/PanJiaChen/vue-element-admin) / [访问](https://panjiachen.github.io/vue-element-admin) / [使用文档](https://panjiachen.github.io/vue-element-admin-site/zh/) 的 基础模板: [vue-admin-template v4.2.1](https://github.com/PanJiaChen/vue-admin-template) / [访问](https://panjiachen.gitee.io/vue-admin-template) 作为模板进行二次开发
 - 这样选择的优势就是，你可以把 vue-element-admin 当做工具箱或者集成方案仓库，在 vue-admin-template 的基础上进行二次开发，想要什么功能或者组件就去 vue-element-admin 那里复制过来。
 - 有任何修改和建议都可以该项目 [issue](https://github.com/PanJiaChen/vue-element-admin/issues/new) 或 [pr](https://github.com/PanJiaChen/vue-element-admin/pulls)
 - 当然有一些问题已经提出并有了很多好的解决方案，你可以查看 [issue](https://github.com/PanJiaChen/vue-element-admin/issues) 获取一些好的解决方案
@@ -246,6 +246,8 @@ npm run lint -- --fix
 
 ## 相关文档
 
+- [vue-element-admin官方文档](https://panjiachen.github.io/vue-element-admin-site/zh/)
+
 vue-element-admin 配套了系列教程文章，如何从零构建后一个完整的后台项目，建议大家先看完这些文章再来实践本项目
 
 - [手摸手，带你用 vue 撸后台 系列一(基础篇)](https://juejin.im/post/59097cd7a22b9d0065fb61d2)
@@ -266,7 +268,7 @@ Modern browsers and Internet Explorer 10+.
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
 | --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
+| IE9, IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
 
 ## License
 
