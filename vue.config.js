@@ -69,10 +69,11 @@ module.exports = {
     ]
   },
   chainWebpack(config) {
+    config.entry.app = ['babel-polyfill', './src/main.js']
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
-
-    // set svg-sprite-loader
+    // config.entry('main').add('babel-polyfill')
+    // set svg-sprite-loadery
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
