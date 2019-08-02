@@ -35,7 +35,11 @@ var videoPlayCallBack;//s视频回调方法
 var audioPlayCallBack;//音频回调方法
 var spyVideoPlayerShootingFlag;
 $(function () {
-
+    // 避免视频重复初始化bug：Player "myVideo" is already initialised. Options will not be applied.
+    // 销毁video实例，避免出现节点不存在 但是flash一直在执行,也避免重新进入页面video未重新声明
+    $.fn.dispose = function(option){
+      videojs(option.id).dispose()
+    }
     /*
      * 初始化*/
     $.fn.videoPlayer = function(option){

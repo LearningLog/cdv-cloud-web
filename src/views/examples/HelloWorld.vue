@@ -13,7 +13,7 @@
     <!--引入组件-->
     <tinymce :id="content" v-model="content" class="tinymce" :height="300" :width="900" :value="content" :toolbar="toolbar" :plugins="plugins" />
     <!--显示输入的文字-->
-    <div class="editor-content" v-html="content" />
+    <div class="editor-content vjs-16-9" v-html="content" />
     <div id="video" />
     <About />
     <div class="placeholder-container">
@@ -177,6 +177,10 @@ export default {
       }
     }
   },
+  beforeDestroy() {
+    // 销毁video实例，避免出现节点不存在 但是flash一直在执行,也避免重新进入页面video未重新声明
+    $('#video').dispose({ id: 'myVideo' })
+  },
   mounted() {
     this.initVideo()
   },
@@ -212,7 +216,7 @@ export default {
         source: 'http://oss.huayun.cdvcloud.com/WJSL/WJSL/54c6f9582a80fc1e70ff5575/dd1f5b0f031e424a86daa58e699fd570_13.flv', // 播放源地址
         // source: 'http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8', // 播放源地址
         title: '这里是标题',
-        thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
+        // thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
         playType: 'video', // 可选值 视频：video 音频：audio
         flvAudio: false,
         shootingFlag: false
