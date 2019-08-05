@@ -1,7 +1,4 @@
-logo
 # CDV CLOUD 3.0+
-
-English | [简体中文](./README-zh.md)
 
 ## 地址
 
@@ -261,6 +258,8 @@ vue-element-admin 配套了系列教程文章，如何从零构建后一个完�
 - [手摸手，带你用合理的姿势使用 webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
 
 **如有问题请先看上述使用文档和文章，若不能满足，请 [issue](https://github.com/PanJiaChen/vue-element-admin/issues/new) 和 [pr](https://github.com/PanJiaChen/vue-element-admin/pulls)**
+
+- 另外，一些公用的组件如富文本、文本复制、播放器、二维码生成、图片剪切等等，请在 `tests` 目录下查看
 
 ## Browsers support
 
