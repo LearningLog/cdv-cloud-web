@@ -231,9 +231,9 @@ export default {
 </script>
 
 <style>
-  /*字体选择的宽度设置，31为中文第31个功能键，233为英文*/
-  .tinymce #mceu_31 span, .tinymce #mceu_233 span {
-    width: 34px;
+  /*字体选择的宽度设置*/
+  .tinymce [aria-label^="Font"][aria-label$="Sizes"] span {
+    width: 34px!important;
   }
 </style>
 <style scoped>
