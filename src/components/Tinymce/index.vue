@@ -143,6 +143,7 @@ export default {
         toolbar: this.toolbar.length > 0 ? this.toolbar : toolbar,
         menubar: this.menubar,
         plugins: this.plugins.length > 0 ? this.plugins : plugins,
+        fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
         end_container_on_empty_block: true,
         powerpaste_word_import: 'clean',
         code_dialog_height: 450,
@@ -229,6 +230,12 @@ export default {
 }
 </script>
 
+<style>
+  /*字体选择的宽度设置，31为中文第31个功能键，233为英文*/
+  .tinymce #mceu_31 span, .tinymce #mceu_233 span {
+    width: 34px;
+  }
+</style>
 <style scoped>
 .tinymce-container {
   position: relative;
