@@ -50,6 +50,13 @@
 │   ├── router                 	# 路由
 │   ├── store                  	# 全局 store管理
 │   ├── styles                 	# 全局样式
+│   │   ├── btn.scss                 # 按钮样式
+│   │   ├── element-ui.scss          # 全局自定义 element-ui 样式
+│   │   ├── index.scss               # 全局通用样式
+│   │   ├── mixin.scss               # 全局mixin
+│   │   ├── sidebar.scss             # sidebar css
+│   │   ├── transition.scss          # vue transition 动画
+│   │   └── variables.scss           # 全局变量
 │   ├── utils                  	# 全局公用方法
 │   ├── vendor                 	# 公用vendor
 │   ├── views                  	# views 所有页面

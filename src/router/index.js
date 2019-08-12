@@ -7,37 +7,21 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /**
- * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
- *
- * hidden: true                   if set true, item will not show in the sidebar(default is false)
- * alwaysShow: true               if set true, will always show the root menu
- *                                if not set alwaysShow, when item has more than one children route,
- *                                it will becomes nested mode, otherwise not show the root menu
- * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
- * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
-  }
- */
-/**
  * 注意: 菜单项sub-menu 仅在 route children.length >= 1 时显示
  * 详情请看此地址: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  *
- * hidden: true                   如果设置为true，则不显示在左侧菜单栏，默认false
- * alwaysShow: true               如果设置为true，则一直显示在根菜单
- *                                如果不设置alwaysShow，当它的子组件路由超过一个时，它将变为嵌套模式，否则，不显示根菜单。
+ * hidden: true                   如果设置为true，则不显示在左侧菜单栏，默认false，如401，login等页面，或者如一些编辑页面/edit/1
+ * alwaysShow: true               当你一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式
+ *                                只有一个时，会将那个子路由当做根路由显示在侧边栏
+ *                                若你想不管路由下面的 children 声明的个数都显示你的根路由
+ *                                你可以设置 alwaysShow: true，这样它就会忽略之前定义的规则，一直显示根路由
  * redirect: noRedirect           如果设置为noRedirect，则在面包屑中不可以重定向（点击无效）
  * name:'router-name'             the name is used by <keep-alive> (must set!!!)
  * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb，但才可以在菜单中显示(default is true)
+    roles: ['admin','editor']    设置该路由进入的权限，支持多个权限叠加
+    title: 'title'               设置该路由在侧边栏和面包屑中展示的名字
+    icon: 'svg-name'             设置该路由的图标
+    breadcrumb: false            如果设置为false，则不会在breadcrumb面包屑中显示(default is true)
     activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
   }
  */
@@ -107,16 +91,16 @@ export const constantRoutes = [
         meta: { title: 'Tree', icon: 'tree' }
       },
       {
-        path: 'HelloWorld',
-        name: 'HelloWorld',
-        component: () => import('@/views/examples/HelloWorld'),
-        meta: { title: 'HelloWorld', icon: 'HelloWorld' }
+        path: 'hello-world',
+        name: 'Hello-world',
+        component: () => import('@/views/examples/hello-world'),
+        meta: { title: 'Hello World', icon: 'hello-world' }
       },
       {
-        path: 'vueCropper',
-        name: 'VueCropper',
-        component: () => import('@/views/examples/vueCropper'),
-        meta: { title: 'VueCropper', icon: 'vueCropper' }
+        path: 'vue-cropper',
+        name: 'Vue-cropper',
+        component: () => import('@/views/examples/vue-cropper'),
+        meta: { title: 'Vue Cropper', icon: 'vue-cropper' }
       }
     ]
   },

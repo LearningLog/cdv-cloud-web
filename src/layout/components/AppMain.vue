@@ -10,7 +10,7 @@
 export default {
   name: 'AppMain',
   computed: {
-    key() {
+    key() { // 保证路由切换时都会重新渲染触发钩子了
       return this.$route.path
     }
   }
