@@ -1,8 +1,10 @@
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
-    </transition>
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <transition name="fade-transform" mode="out-in">
+        <router-view :key="key" />
+      </transition>
+    </el-scrollbar>
   </section>
 </template>
 
@@ -24,6 +26,9 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+}
+.app-main .el-scrollbar {
+  height: calc(100vh - 50px);
 }
 .fixed-header+.app-main {
   padding-top: 50px;

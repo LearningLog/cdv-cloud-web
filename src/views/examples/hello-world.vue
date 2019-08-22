@@ -15,6 +15,7 @@
     <!--显示输入的文字-->
     <div class="editor-content vjs-16-9" v-html="content" />
     <div id="video" />
+    <div id="video2" />
     <About />
     <div class="placeholder-container">
       <div>placeholder</div>
@@ -180,9 +181,11 @@ export default {
   beforeDestroy() {
     // 销毁video实例，避免出现节点不存在 但是flash一直在执行,也避免重新进入页面video未重新声明
     $('#video').dispose({ id: 'myVideo' })
+    $('#video2').dispose({ id: 'myVideo2' })
   },
   mounted() {
     this.initVideo()
+    this.initVideo2()
   },
   methods: {
     handleCopy(text, event) {
@@ -209,6 +212,23 @@ export default {
     initVideo() {
       $('#video').videoPlayer({
         id: 'myVideo', // 创建video id
+        control: true, // 视频支持  音频不支持
+        autoPlay: false,
+        width: 600, // 视频音频的宽 最小宽度500
+        height: 350, // 视频的宽,音频设置无效
+        source: 'http://oss.huayun.cdvcloud.com/WJSL/WJSL/54c6f9582a80fc1e70ff5575/dd1f5b0f031e424a86daa58e699fd570_13.flv', // 播放源地址
+        // source: 'http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8', // 播放源地址
+        title: '这里是标题',
+        // thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
+        playType: 'video', // 可选值 视频：video 音频：audio
+        flvAudio: false,
+        shootingFlag: false
+        // clarityArr: [1, 2, 3]// 清晰度切换
+      })
+    },
+    initVideo2() {
+      $('#video2').videoPlayer({
+        id: 'myVideo2', // 创建video id
         control: true, // 视频支持  音频不支持
         autoPlay: false,
         width: 600, // 视频音频的宽 最小宽度500
