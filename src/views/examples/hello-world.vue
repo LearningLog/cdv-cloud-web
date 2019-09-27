@@ -11,7 +11,7 @@
     <el-button type="primary" plain @click="del()">delCookie</el-button>
     <br><br>
     <!--引入组件-->
-    <tinymce :id="content" v-model="content" class="tinymce" :height="300" :width="900" :value="content" :toolbar="toolbar" :plugins="plugins" />
+    <tinymce :id="content" v-model="content" class="tinymce" :height="300" :width="900" :value="content" />
     <!--显示输入的文字-->
     <div class="editor-content vjs-16-9" v-html="content" />
     <div id="video" />
@@ -131,6 +131,7 @@
     <el-tooltip placement="top" content="tooltip">
       <back-to-top :custom-style="myBackToTopStyle" :visibility-height="300" :back-position="0" transition-name="fade" />
     </el-tooltip>
+    <iframe src="//vjs.zencdn.net/v/oceans.mp4" frameborder="0"></iframe>
     <Footer />
   </div>
 </template>
@@ -164,8 +165,8 @@ export default {
       backgroundAlpha: 1,
       inputData: 'copy123456',
       content: 'Tinymce',
-      toolbar: ['searchreplace bold italic underline strikethrough alignleft aligncenter alignright outdent indent  blockquote undo redo removeformat subscript superscript code codesample', 'hr bullist numlist link charmap preview anchor pagebreak insertdatetime table emoticons forecolor backcolor fullscreen fontsizeselect fontselect'],
-      plugins: ['advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr imagetools insertdatetime link lists nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount'],
+      // toolbar: ['searchreplace bold italic underline strikethrough alignleft aligncenter alignright outdent indent  blockquote undo redo removeformat subscript superscript code codesample', 'hr bullist numlist link charmap preview anchor pagebreak insertdatetime table emoticons forecolor backcolor fullscreen fontsizeselect fontselect'],
+      // plugins: ['advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr imagetools insertdatetime link lists nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount'],
       // customizable button style, show/hide critical point, return position
       myBackToTopStyle: {
         right: '50px',
@@ -217,6 +218,7 @@ export default {
         width: 600, // 视频音频的宽 最小宽度500
         height: 350, // 视频的宽,音频设置无效
         source: 'http://oss.huayun.cdvcloud.com/WJSL/WJSL/54c6f9582a80fc1e70ff5575/dd1f5b0f031e424a86daa58e699fd570_13.flv', // 播放源地址
+        // source: '//vjs.zencdn.net/v/oceans.mp4', // 播放源地址
         // source: 'http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8', // 播放源地址
         title: '这里是标题',
         // thumbnailUrl: 'https://matrimony001.100msh.net.cn/public/code/material/mp-7261-1554175849.jpg',
